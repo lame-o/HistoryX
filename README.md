@@ -1,50 +1,86 @@
 # HistoryX - Twitter History Analyzer
 
+🚧 **Work in Progress** 🚧
+
 This tool analyzes a Twitter/X user's history (tweets, likes, and replies) to identify potentially concerning content using sentiment analysis and content filtering.
+
+## Current Status
+
+### What Works
+- ✅ Twitter data collection (tweets, replies, and likes from the past 5 years)
+- ✅ CSV export of collected data
+- ✅ Basic rate limit handling
+
+### Under Development
+- 🔄 Analysis features for identifying explicit, immoral, or unethical behavior
+- 🔄 Enhanced rate limit handling for better data collection
+- 🔄 Data visualization and reporting
 
 ## Setup
 
-1. Create a Twitter Developer Account and get your API credentials at https://developer.twitter.com/
-2. Create a `.env` file in the project root with your Twitter API credentials:
-```
-TWITTER_API_KEY=your_api_key
-TWITTER_API_SECRET=your_api_secret
-TWITTER_ACCESS_TOKEN=your_access_token
-TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret
-TWITTER_BEARER_TOKEN=your_bearer_token
+1. Clone the repository:
+```bash
+git clone https://github.com/lame-o/HistoryX.git
+cd HistoryX
 ```
 
-3. Install the required packages:
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
+4. Create a `.env` file with your Twitter API credentials:
+```
+TWITTER_BEARER_TOKEN=your_bearer_token_here
+TWITTER_API_KEY=your_api_key_here
+TWITTER_API_SECRET=your_api_secret_here
+TWITTER_ACCESS_TOKEN=your_access_token_here
+TWITTER_ACCESS_TOKEN_SECRET=your_access_token_secret_here
+```
+
 ## Usage
 
-Run the analyzer:
 ```bash
 python twitter_analyzer.py
 ```
 
-Enter a Twitter username when prompted (without the @ symbol). The tool will:
-1. Collect the user's tweets, replies, and likes
-2. Analyze the content for concerning patterns
-3. Generate a summary report in the console
-4. Save a detailed CSV report
+When prompted, enter a Twitter username (without @) to analyze.
 
-## Analysis Features
+## Known Limitations
 
-- Profanity detection
-- Sentiment analysis (positive/negative)
-- Subjectivity analysis
-- Timeline analysis
-- Interaction patterns
+1. **Rate Limiting**: The script is currently affected by Twitter API rate limits. If you hit the rate limit:
+   - The script will stop collecting data
+   - You'll need to wait until your rate limit resets (usually monthly)
+   - Future versions will implement better rate limit handling and data persistence
 
-## Output
+2. **Analysis Features**: The analysis component is still under development. Currently, the script only collects and stores data without performing any analysis.
 
-The tool generates two types of output:
-1. A console summary with key metrics
-2. A detailed CSV report with all analyzed content
+## Next Steps
+
+1. Implement analysis features for:
+   - Content classification
+   - Pattern recognition
+   - Behavioral analysis
+
+2. Add data persistence to handle rate limits better:
+   - Save partial progress
+   - Resume from last successful point
+   - Merge multiple collection sessions
+
+3. Create visualization and reporting features:
+   - Timeline views
+   - Content summaries
+   - Analysis reports
+
+## Contributing
+
+This project is in active development. Feel free to open issues or submit pull requests!
 
 ## Note
 
